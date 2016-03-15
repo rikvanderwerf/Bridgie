@@ -1,0 +1,80 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# C extensions
+*.so
+
+# Vim bullshit
+*.swp
+
+# Distribution / packaging
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*,cover
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+target/
+
+# ini files
+*.ini
+
+#Bower & Gulp related stuff
+bower_components/
+node_modules/
+
+eventfriend/static/deps/styles/*
+eventfriend/static/deps/scripts/*
+!eventfriend/static/deps/styles/.gitkeep
+!eventfriend/static/deps/scripts/.gitkeep
+
+eventfriend/static/img/**
+!eventfriend/static/img/.gitkeep
+
+eventfriend/static/scripts/min/**
+!eventfriend/static/scripts/min/.gitkeep
+
+eventfriend/static/styles/min/**
+!eventfriend/static/scripts/min/.gitkeep
