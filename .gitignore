@@ -1,10 +1,12 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
-*$py.class
 
 # C extensions
 *.so
+
+# Vim bullshit
+*.swp
 
 # Distribution / packaging
 .Python
@@ -15,7 +17,6 @@ dist/
 downloads/
 eggs/
 .eggs/
-lib/
 lib64/
 parts/
 sdist/
@@ -43,7 +44,6 @@ htmlcov/
 nosetests.xml
 coverage.xml
 *,cover
-.hypothesis/
 
 # Translations
 *.mo
@@ -58,5 +58,23 @@ docs/_build/
 # PyBuilder
 target/
 
-#Ipython Notebook
-.ipynb_checkpoints
+# ini files
+*.ini
+
+#Bower & Gulp related stuff
+bower_components/
+node_modules/
+
+eventfriend/static/deps/styles/*
+eventfriend/static/deps/scripts/*
+!eventfriend/static/deps/styles/.gitkeep
+!eventfriend/static/deps/scripts/.gitkeep
+
+eventfriend/static/img/**
+!eventfriend/static/img/.gitkeep
+
+eventfriend/static/scripts/min/**
+!eventfriend/static/scripts/min/.gitkeep
+
+eventfriend/static/styles/min/**
+!eventfriend/static/scripts/min/.gitkeep
