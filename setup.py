@@ -17,6 +17,8 @@ requires = [
     'transaction',
     'zope.sqlalchemy',
     'waitress',
+    'requests',
+    'marshmallow'
     ]
 
 setup(name='bridgie',
