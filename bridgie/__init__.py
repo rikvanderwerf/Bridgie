@@ -18,5 +18,6 @@ def main(global_config, **settings):
     config.add_static_view('static', 'static', cache_max_age=3600)
     config.add_route('data.get', '/')
     config.add_route('location.list', '/locations')
+    config.add_route('water_level.list', '/locations/{location_id}/water_levels')
     config.scan('bridgie.handlers')
     return config.make_wsgi_app()
