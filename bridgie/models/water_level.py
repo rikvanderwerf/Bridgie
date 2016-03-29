@@ -7,6 +7,7 @@ from bridgie.models.meta import Base, DBSession as session
 
 
 class WaterLevelSchema(Schema):
+    id = fields.Int()
     time = fields.Str(load_from="tijd", required=True)
     water_level_height = fields.Str(load_from="waarde", required=True)
     datetime = fields.Date()
@@ -22,12 +23,13 @@ class WaterLevel(Base):
     water_level_height = Column(Integer)  # in cm
     predicted = Column(Boolean)
 
-    location = relationship('Location')
+    location = relationship('Location', backref='waterlevels')
 
     date_created = Column(DateTime(timezone=True), default=func.now())
     date_updated = Column(DateTime(timezone=True),
                           default=func.now(),
                           onupdate=func.current_timestamp())
+
 
     @property
     def datetime(self):
