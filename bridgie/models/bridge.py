@@ -1,6 +1,14 @@
 from sqlalchemy import (Column, DateTime, func, Integer,
                         Float, String)
 from bridgie.models.meta import Base, DBSession as session
+from marshmallow import Schema, fields
+
+
+class BridgeSchema(Schema):
+    name = fields.Str(load_from="locatienaam")
+    latitude = fields.Float()
+    longitude = fields.Float()
+    height = fields.Integer()
 
 
 class Bridge(Base):
