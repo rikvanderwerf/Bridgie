@@ -8,7 +8,6 @@ from bridgie.models.location import (Location, LocationSchema,
 from bridgie.models.water_level import (WaterLevel, WaterLevelSchema, get_water_level)
 
 
-
 @view_config(route_name='data.get',
              renderer='json',
              request_method='GET',
@@ -52,12 +51,30 @@ def get(request):
                 water_level = WaterLevel()
 
             water_level.set_fields(result)
+            water_level.predicted = False
             water_level.location = location
-        try:
             persist(water_level)
-        except:
-            rollback()
-        finally:
-            commit()
+        try:
+            water_levels = requests.get(url).json()['H10V']
+            for water_level_ in water_levels:
+
+                try:
+                    result, errors = WaterLevelSchema(strict=True).load(
+                        water_level_)
+                except ValidationError as e:
+                    print(e)
+                    continue
+                try:
+                    water_level = get_water_level(location.id, water_level_['tijd'])
+                except NoResultFound:
+                    water_level = WaterLevel()
+
+                water_level.set_fields(result)
+                water_level.location = location
+                water_level.predicted = True
+                persist(water_level)
+        except KeyError:
+            break
+        commit()
 
     return data
