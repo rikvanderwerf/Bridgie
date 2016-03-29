@@ -19,7 +19,7 @@ class Bridge(Base):
                           onupdate=func.current_timestamp())
 
 
-def get_bridge_level_by_id(id):
+def get_bridge_by_id(id):
     return session.query(Bridge).get(id)
 
 

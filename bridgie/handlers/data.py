@@ -6,6 +6,21 @@ from marshmallow import ValidationError
 from bridgie.models.location import (Location, LocationSchema,
                                      get_location_by_code)
 from bridgie.models.water_level import (WaterLevel, WaterLevelSchema, get_water_level)
+from bridgie.models.bridge import (Bridge)
+
+
+@view_config(route_name='bridge.add',
+             renderer='json',
+             request_method='GET',
+             permission='public')
+def add_bridge(request):
+    bridge = Bridge()
+    bridge.name = "Erasmusbrug"
+    bridge.latitude = 51.909071
+    bridge.longitude = 4.486798
+    bridge.height = 1250
+    persist(bridge)
+    commit()
 
 
 @view_config(route_name='data.get',

@@ -49,4 +49,5 @@ def get_water_level(location_id, time):
 
 
 def list_water_levels_by_location(location_id):
-    return session.query(WaterLevel).filter(WaterLevel.location_id == location_id)
+    q = session.query(WaterLevel).filter(WaterLevel.location_id == location_id)
+    return q.order_by(WaterLevel.time.desc())
