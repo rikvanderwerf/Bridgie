@@ -3,7 +3,7 @@ from sqlalchemy import (Column, DateTime, func, Integer, String, Float,
 from bridgie.models.meta import Base, DBSession as session
 from sqlalchemy.orm import relationship
 from marshmallow import Schema, fields
-from bridgie.models.water_level import (WaterLevelSchema)
+from bridgie.models.water_level import (WaterLevelSchema, list_water_levels_by_location)
 
 
 class LocationSchema(Schema):
@@ -31,7 +31,11 @@ class Location(Base):
                           default=func.now(),
                           onupdate=func.current_timestamp())
 
-    water_levels = relationship("WaterLevel", backref='Location')
+    # water_levels = relationship("WaterLevel", backref='Location')
+
+    @property
+    def water_levels(self):
+        return list_water_levels_by_location(self.id)
 
     def set_fields(self, data=None):
         for key, value in data.items():
